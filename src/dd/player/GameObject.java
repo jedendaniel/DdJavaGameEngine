@@ -46,7 +46,7 @@ public class GameObject {
         Graphics2D graphics2D = (Graphics2D)graphics;
         Vector2 position = getPosition();
         Vector2 size = getSize();
-        graphics2D.setColor(Color.BLACK);
+        graphics2D.setColor(Color.RED);
         graphics2D.drawRect(position.x, position.y, size.x, size.y);
     }
 }

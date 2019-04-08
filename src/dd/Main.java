@@ -1,13 +1,12 @@
 package dd;
 
+import dd.display.GraphicSystem;
 import dd.input.InputHandler;
-import dd.input.KeyInput;
+import dd.physic.PlatformerPhysicEngine;
 import dd.player.GameObject;
 import dd.utility.Vector2;
 
 import java.util.ArrayList;
-
-import static sun.misc.PostVMInitHook.run;
 
 public class Main {
 
@@ -15,7 +14,7 @@ public class Main {
         ArrayList<GameObject> gameObjects = new ArrayList(){{
             add(new GameObject(new Vector2(0,0), new Vector2(10,10)));
         }};
-        new Game(new GraphicSystem(gameObjects), new PhysicEngine(gameObjects),
+        new Game(new GraphicSystem(gameObjects), new PlatformerPhysicEngine(gameObjects),
             new InputHandler(gameObjects.get(0))).run();
     }
 }

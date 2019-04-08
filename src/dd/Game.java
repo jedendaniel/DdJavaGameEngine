@@ -1,34 +1,29 @@
 package dd;
 
+import dd.display.DisplaySystem;
 import dd.input.InputHandler;
+import dd.physic.PhysicEngine;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.awt.*;
 
-public class Game {
+public class Game extends Component{
 
-    Runnable graphicSystem;
+    DisplaySystem displaySystem;
     PhysicEngine physicEngine;
     InputHandler inputHandler;
 
-    public Game(GraphicSystem graphicSystem, PhysicEngine physicEngine, InputHandler inputHandler)
-            throws InterruptedException {
-        this.graphicSystem = graphicSystem;
+    public Game(DisplaySystem displaySystem, PhysicEngine physicEngine, InputHandler inputHandler) {
+        this.displaySystem = displaySystem;
         this.physicEngine = physicEngine;
         this.inputHandler = inputHandler;
-        graphicSystem.addKeyListener(inputHandler.getKeyInput());
-        ExecutorService service = Executors.newFixedThreadPool(2);
-        service.submit(graphicSystem);
-        service.submit(physicEngine);
-        service.shutdown();
-        service.awaitTermination(1, TimeUnit.DAYS);
-        System.exit(0);
+        addKeyListener(inputHandler.getKeyInput());
     }
 
     public void run(){
         while (true){
-            inputHandler
+            displaySystem.render();
+            physicEngine.update();
+            // TODO: not so fast BOI
         }
     }
 }
