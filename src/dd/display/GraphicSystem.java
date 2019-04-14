@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class GraphicSystem extends Canvas implements DisplaySystem{
 
